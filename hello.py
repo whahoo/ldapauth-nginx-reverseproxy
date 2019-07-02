@@ -1,4 +1,4 @@
-from flask import Flask, abort
+from flask import Flask, abort, request
 import ldap
 
 app = Flask(__name__)
@@ -27,9 +27,16 @@ def ldap_auth( username, password, group ):
 
     return
 
+@app.errorhandler(404)
+def page_not_found(error):
+        print( request.url );
+        return 'This route does not exist {}'.format(request.url), 404
 
-@app.route("/")
+@app.route("/auth_proxy")
 def auth():
-    ldap_auth('admin','admins','group')
+    ldap_auth('admin','admin','group')
 
     return "heelo"
+
+print( app.config['SERVER_NAME'])
+
