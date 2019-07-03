@@ -3,8 +3,8 @@ import ldap
 
 app = Flask(__name__)
 
-bind_dn = 'cn={},dc={},dc={}'.format( 'admin', 'example', 'org')
-bind_password = 'admin'
+#bind_dn = 'cn={},dc={},dc={}'.format( 'admin', 'example', 'org')
+#bind_password = 'admin'
 base_dn = 'dc={},dc={}'.format( 'example', 'org')
 
 def ldap_auth( username, password, group, ldap_connection ):
